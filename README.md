@@ -77,7 +77,7 @@ blind75の練習用リポジトリ
 - [ ] 271. Encode and Decode Strings
 
 ## Tree (木)
-- [ ] 104. Maximum Depth of Binary Tree
+- [x] 104. Maximum Depth of Binary Tree
 - [ ] 100. Same Tree
 - [ ] 226. Invert Binary Tree
 - [ ] 124. Binary Tree Maximum Path Sum
