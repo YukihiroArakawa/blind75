@@ -9,31 +9,31 @@
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
-        // ベースケース: 空のノードは深さ 0
-        // 制約より根自体が null（ノード数 0）の場合もここで 0 が返る
-        if (root == null) {
-            return 0;
-        }
-
-        // 左右の部分木の最大深さをそれぞれ再帰的に算出
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
-
-        // 自ノード分の 1 を加えて、深い側の値を返す
-        return Math.max(leftDepth, rightDepth) + 1;
+  public int maxDepth(TreeNode root) {
+    // ベースケース: 空のノードは深さ 0
+    // 制約より根自体が null（ノード数 0）の場合もここで 0 が返る
+    if (root == null) {
+      return 0;
     }
+
+    // 左右の部分木の最大深さをそれぞれ再帰的に算出
+    int leftDepth = maxDepth(root.left);
+    int rightDepth = maxDepth(root.right);
+
+    // 自ノード分の 1 を加えて、深い側の値を返す
+    return Math.max(leftDepth, rightDepth) + 1;
+  }
 }
