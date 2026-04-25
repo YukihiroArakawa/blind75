@@ -78,7 +78,7 @@ blind75の練習用リポジトリ
 
 ## Tree (木)
 - [x] 104. Maximum Depth of Binary Tree
-- [ ] 100. Same Tree
+- [x] 100. Same Tree
 - [ ] 226. Invert Binary Tree
 - [ ] 124. Binary Tree Maximum Path Sum
 - [ ] 102. Binary Tree Level Order Traversal
