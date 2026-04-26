@@ -79,7 +79,7 @@ blind75の練習用リポジトリ
 ## Tree (木)
 - [x] 104. Maximum Depth of Binary Tree (Easy)
 - [x] 100. Same Tree (Easy)
-- [ ] 226. Invert Binary Tree (Easy)
+- [x] 226. Invert Binary Tree (Easy)
 - [ ] 124. Binary Tree Maximum Path Sum (Hard)
 - [ ] 102. Binary Tree Level Order Traversal (Medium)
 - [ ] 297. Serialize and Deserialize Binary Tree (Hard)
