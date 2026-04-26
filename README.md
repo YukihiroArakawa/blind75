@@ -80,7 +80,7 @@ blind75の練習用リポジトリ
 - [x] 104. Maximum Depth of Binary Tree (Easy)
 - [x] 100. Same Tree (Easy)
 - [x] 226. Invert Binary Tree (Easy)
-- [ ] 572. Subtree of Another Tree (Easy)
+- [x] 572. Subtree of Another Tree (Easy)
 - [ ] 102. Binary Tree Level Order Traversal (Medium)
 - [ ] 105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
 - [ ] 98. Validate Binary Search Tree (Medium)
