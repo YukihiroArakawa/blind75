@@ -65,7 +65,7 @@ blind75の練習用リポジトリ
 - [ ] 79. Word Search (Medium)
 
 ## String (文字列)
-- [ ] 242. Valid Anagram (Easy)
+- [x] 242. Valid Anagram (Easy)
 - [ ] 20. Valid Parentheses (Easy)
 - [ ] 125. Valid Palindrome (Easy)
 - [ ] 3. Longest Substring Without Repeating Characters (Medium)
