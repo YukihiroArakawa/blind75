@@ -67,7 +67,7 @@ blind75の練習用リポジトリ
 ## String (文字列)
 - [x] 242. Valid Anagram (Easy)
 - [x] 20. Valid Parentheses (Easy)
-- [ ] 125. Valid Palindrome (Easy)
+- [x] 125. Valid Palindrome (Easy)
 - [ ] 3. Longest Substring Without Repeating Characters (Medium)
 - [ ] 424. Longest Repeating Character Replacement (Medium)
 - [ ] 49. Group Anagrams (Medium)
