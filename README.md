@@ -51,7 +51,7 @@ blind75の練習用リポジトリ
 - [ ] 253. Meeting Rooms II (Medium)
 
 ## Linked List (連結リスト)
-- [ ] 206. Reverse Linked List (Easy)
+- [x] 206. Reverse Linked List (Easy)
 - [ ] 141. Linked List Cycle (Easy)
 - [ ] 21. Merge Two Sorted Lists (Easy)
 - [ ] 19. Remove Nth Node From End of List (Medium)
