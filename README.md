@@ -81,7 +81,7 @@ blind75の練習用リポジトリ
 - [x] 100. Same Tree (Easy)
 - [x] 226. Invert Binary Tree (Easy)
 - [x] 572. Subtree of Another Tree (Easy)
-- [ ] 102. Binary Tree Level Order Traversal (Medium)
+- [x] 102. Binary Tree Level Order Traversal (Medium)
 - [ ] 105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
 - [ ] 98. Validate Binary Search Tree (Medium)
 - [ ] 230. Kth Smallest Element in a BST (Medium)
