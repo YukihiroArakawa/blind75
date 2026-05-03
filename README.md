@@ -83,7 +83,7 @@ blind75の練習用リポジトリ
 - [x] 572. Subtree of Another Tree (Easy)
 - [x] 102. Binary Tree Level Order Traversal (Medium)
 - [x] 105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
-- [ ] 98. Validate Binary Search Tree (Medium)
+- [x] 98. Validate Binary Search Tree (Medium)
 - [ ] 230. Kth Smallest Element in a BST (Medium)
 - [ ] 235. Lowest Common Ancestor of a BST (Medium)
 - [ ] 208. Implement Trie (Prefix Tree) (Medium)
