@@ -2,97 +2,117 @@
 blind75の練習用リポジトリ
 
 ## Array (配列)
-- [x] 1. Two Sum (Easy)
-- [x] 121. Best Time to Buy and Sell Stock (Easy)
-- [x] 217. Contains Duplicate (Easy)
-- [x] 238. Product of Array Except Self (Medium)
-- [x] 53. Maximum Subarray (Medium)
-- [x] 152. Maximum Product Subarray (Medium)
-- [x] 153. Find Minimum in Rotated Sorted Array (Medium)
-- [x] 33. Search in Rotated Sorted Array (Medium)
-- [x] 15. 3Sum (Medium)
-- [x] 11. Container With Most Water (Medium)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 1. Two Sum | Easy | x |  |  |
+| 121. Best Time to Buy and Sell Stock | Easy | x |  |  |
+| 217. Contains Duplicate | Easy | x |  |  |
+| 238. Product of Array Except Self | Medium | x |  |  |
+| 53. Maximum Subarray | Medium | x |  |  |
+| 152. Maximum Product Subarray | Medium | x |  |  |
+| 153. Find Minimum in Rotated Sorted Array | Medium | x |  |  |
+| 33. Search in Rotated Sorted Array | Medium | x |  |  |
+| 15. 3Sum | Medium | x |  |  |
+| 11. Container With Most Water | Medium | x |  |  |
 
 ## Binary (ビット操作)
-- [ ] 191. Number of 1 Bits (Easy)
-- [ ] 338. Counting Bits (Easy)
-- [ ] 268. Missing Number (Easy)
-- [ ] 190. Reverse Bits (Easy)
-- [ ] 371. Sum of Two Integers (Medium)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 191. Number of 1 Bits | Easy |  |  |  |
+| 338. Counting Bits | Easy |  |  |  |
+| 268. Missing Number | Easy |  |  |  |
+| 190. Reverse Bits | Easy |  |  |  |
+| 371. Sum of Two Integers | Medium |  |  |  |
 
 ## Dynamic Programming (動的計画法)
-- [ ] 70. Climbing Stairs (Easy)
-- [ ] 322. Coin Change (Medium)
-- [ ] 300. Longest Increasing Subsequence (Medium)
-- [ ] 1143. Longest Common Subsequence (Medium)
-- [ ] 139. Word Break (Medium)
-- [ ] 39. Combination Sum (Medium)
-- [ ] 198. House Robber (Medium)
-- [ ] 213. House Robber II (Medium)
-- [ ] 91. Decode Ways (Medium)
-- [ ] 62. Unique Paths (Medium)
-- [ ] 55. Jump Game (Medium)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 70. Climbing Stairs | Easy |  |  |  |
+| 322. Coin Change | Medium |  |  |  |
+| 300. Longest Increasing Subsequence | Medium |  |  |  |
+| 1143. Longest Common Subsequence | Medium |  |  |  |
+| 139. Word Break | Medium |  |  |  |
+| 39. Combination Sum | Medium |  |  |  |
+| 198. House Robber | Medium |  |  |  |
+| 213. House Robber II | Medium |  |  |  |
+| 91. Decode Ways | Medium |  |  |  |
+| 62. Unique Paths | Medium |  |  |  |
+| 55. Jump Game | Medium |  |  |  |
 
 ## Graph (グラフ)
-- [ ] 133. Clone Graph (Medium)
-- [ ] 207. Course Schedule (Medium)
-- [ ] 417. Pacific Atlantic Water Flow (Medium)
-- [ ] 200. Number of Islands (Medium)
-- [ ] 128. Longest Consecutive Sequence (Medium)
-- [ ] 261. Graph Valid Tree (Medium)
-- [ ] 323. Number of Connected Components in an Undirected Graph (Medium)
-- [ ] 269. Alien Dictionary (Hard)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 133. Clone Graph | Medium |  |  |  |
+| 207. Course Schedule | Medium |  |  |  |
+| 417. Pacific Atlantic Water Flow | Medium |  |  |  |
+| 200. Number of Islands | Medium |  |  |  |
+| 128. Longest Consecutive Sequence | Medium |  |  |  |
+| 261. Graph Valid Tree | Medium |  |  |  |
+| 323. Number of Connected Components in an Undirected Graph | Medium |  |  |  |
+| 269. Alien Dictionary | Hard |  |  |  |
 
 ## Interval (区間)
-- [ ] 252. Meeting Rooms (Easy)
-- [ ] 57. Insert Interval (Medium)
-- [ ] 56. Merge Intervals (Medium)
-- [ ] 435. Non-overlapping Intervals (Medium)
-- [ ] 253. Meeting Rooms II (Medium)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 252. Meeting Rooms | Easy |  |  |  |
+| 57. Insert Interval | Medium |  |  |  |
+| 56. Merge Intervals | Medium |  |  |  |
+| 435. Non-overlapping Intervals | Medium |  |  |  |
+| 253. Meeting Rooms II | Medium |  |  |  |
 
 ## Linked List (連結リスト)
-- [x] 206. Reverse Linked List (Easy)
-- [x] 141. Linked List Cycle (Easy)
-- [x] 21. Merge Two Sorted Lists (Easy)
-- [ ] 19. Remove Nth Node From End of List (Medium)
-- [ ] 143. Reorder List (Medium)
-- [ ] 23. Merge k Sorted Lists (Hard)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 206. Reverse Linked List | Easy | x |  |  |
+| 141. Linked List Cycle | Easy | x |  |  |
+| 21. Merge Two Sorted Lists | Easy | x |  |  |
+| 19. Remove Nth Node From End of List | Medium |  |  |  |
+| 143. Reorder List | Medium |  |  |  |
+| 23. Merge k Sorted Lists | Hard |  |  |  |
 
 ## Matrix (行列)
-- [ ] 73. Set Matrix Zeroes (Medium)
-- [ ] 54. Spiral Matrix (Medium)
-- [ ] 48. Rotate Image (Medium)
-- [ ] 79. Word Search (Medium)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 73. Set Matrix Zeroes | Medium |  |  |  |
+| 54. Spiral Matrix | Medium |  |  |  |
+| 48. Rotate Image | Medium |  |  |  |
+| 79. Word Search | Medium |  |  |  |
 
 ## String (文字列)
-- [x] 242. Valid Anagram (Easy)
-- [x] 20. Valid Parentheses (Easy)
-- [x] 125. Valid Palindrome (Easy)
-- [ ] 3. Longest Substring Without Repeating Characters (Medium)
-- [ ] 424. Longest Repeating Character Replacement (Medium)
-- [ ] 49. Group Anagrams (Medium)
-- [ ] 5. Longest Palindromic Substring (Medium)
-- [ ] 647. Palindromic Substrings (Medium)
-- [ ] 271. Encode and Decode Strings (Medium)
-- [ ] 76. Minimum Window Substring (Hard)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 242. Valid Anagram | Easy | x |  |  |
+| 20. Valid Parentheses | Easy | x |  |  |
+| 125. Valid Palindrome | Easy | x |  |  |
+| 3. Longest Substring Without Repeating Characters | Medium |  |  |  |
+| 424. Longest Repeating Character Replacement | Medium |  |  |  |
+| 49. Group Anagrams | Medium |  |  |  |
+| 5. Longest Palindromic Substring | Medium |  |  |  |
+| 647. Palindromic Substrings | Medium |  |  |  |
+| 271. Encode and Decode Strings | Medium |  |  |  |
+| 76. Minimum Window Substring | Hard |  |  |  |
 
 ## Tree (木)
-- [x] 104. Maximum Depth of Binary Tree (Easy)
-- [x] 100. Same Tree (Easy)
-- [x] 226. Invert Binary Tree (Easy)
-- [x] 572. Subtree of Another Tree (Easy)
-- [x] 102. Binary Tree Level Order Traversal (Medium)
-- [x] 105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
-- [x] 98. Validate Binary Search Tree (Medium)
-- [ ] 230. Kth Smallest Element in a BST (Medium)
-- [ ] 235. Lowest Common Ancestor of a BST (Medium)
-- [ ] 208. Implement Trie (Prefix Tree) (Medium)
-- [ ] 211. Design Add and Search Words Data Structure (Medium)
-- [ ] 124. Binary Tree Maximum Path Sum (Hard)
-- [ ] 297. Serialize and Deserialize Binary Tree (Hard)
-- [ ] 212. Word Search II (Hard)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 104. Maximum Depth of Binary Tree | Easy | x |  |  |
+| 100. Same Tree | Easy | x |  |  |
+| 226. Invert Binary Tree | Easy | x |  |  |
+| 572. Subtree of Another Tree | Easy | x |  |  |
+| 102. Binary Tree Level Order Traversal | Medium | x |  |  |
+| 105. Construct Binary Tree from Preorder and Inorder Traversal | Medium | x |  |  |
+| 98. Validate Binary Search Tree | Medium | x |  |  |
+| 230. Kth Smallest Element in a BST | Medium |  |  |  |
+| 235. Lowest Common Ancestor of a BST | Medium |  |  |  |
+| 208. Implement Trie (Prefix Tree) | Medium |  |  |  |
+| 211. Design Add and Search Words Data Structure | Medium |  |  |  |
+| 124. Binary Tree Maximum Path Sum | Hard |  |  |  |
+| 297. Serialize and Deserialize Binary Tree | Hard |  |  |  |
+| 212. Word Search II | Hard |  |  |  |
 
 ## Heap (ヒープ)
-- [ ] 347. Top K Frequent Elements (Medium)
-- [ ] 23. Merge k Sorted Lists (Hard)
-- [ ] 295. Find Median from Data Stream (Hard)
+| 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
+| --- | --- | --- | --- | --- |
+| 347. Top K Frequent Elements | Medium |  |  |  |
+| 23. Merge k Sorted Lists | Hard |  |  |  |
+| 295. Find Median from Data Stream | Hard |  |  |  |
