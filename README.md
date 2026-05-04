@@ -103,7 +103,7 @@ blind75の練習用リポジトリ
 | 105. Construct Binary Tree from Preorder and Inorder Traversal | Medium | x |  |  |
 | 98. Validate Binary Search Tree | Medium | x |  |  |
 | 230. Kth Smallest Element in a BST | Medium | x |  |  |
-| 235. Lowest Common Ancestor of a BST | Medium |  |  |  |
+| 235. Lowest Common Ancestor of a BST | Medium | x  |  |  |
 | 208. Implement Trie (Prefix Tree) | Medium |  |  |  |
 | 211. Design Add and Search Words Data Structure | Medium |  |  |  |
 | 124. Binary Tree Maximum Path Sum | Hard |  |  |  |
