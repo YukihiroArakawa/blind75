@@ -18,7 +18,7 @@ blind75の練習用リポジトリ
 ## Binary (ビット操作)
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
-| 191. Number of 1 Bits | Easy |  |  |  |
+| 191. Number of 1 Bits | Easy | x |  |  |
 | 338. Counting Bits | Easy |  |  |  |
 | 268. Missing Number | Easy |  |  |  |
 | 190. Reverse Bits | Easy |  |  |  |
