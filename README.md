@@ -84,7 +84,7 @@ blind75の練習用リポジトリ
 | 242. Valid Anagram | Easy | x |  |  |
 | 20. Valid Parentheses | Easy | x |  |  |
 | 125. Valid Palindrome | Easy | x |  |  |
-| 3. Longest Substring Without Repeating Characters | Medium |  |  |  |
+| 3. Longest Substring Without Repeating Characters | Medium | x |  |  |
 | 424. Longest Repeating Character Replacement | Medium |  |  |  |
 | 49. Group Anagrams | Medium |  |  |  |
 | 5. Longest Palindromic Substring | Medium |  |  |  |
@@ -101,7 +101,7 @@ blind75の練習用リポジトリ
 | 572. Subtree of Another Tree | Easy | x |  |  |
 | 102. Binary Tree Level Order Traversal | Medium | x |  |  |
 | 105. Construct Binary Tree from Preorder and Inorder Traversal | Medium | x |  |  |
-| 98. Validate Binary Search Tree | Medium | x | x |  |
+| 98. Validate Binary Search Tree | Medium | x | o |  |
 | 230. Kth Smallest Element in a BST | Medium | x |  |  |
 | 235. Lowest Common Ancestor of a BST | Medium | x  |  |  |
 | 208. Implement Trie (Prefix Tree) | Medium | x |  |  |
