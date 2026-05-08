@@ -85,8 +85,8 @@ blind75の練習用リポジトリ
 | 20. Valid Parentheses | Easy | x |  |  |
 | 125. Valid Palindrome | Easy | x |  |  |
 | 3. Longest Substring Without Repeating Characters | Medium | x |  |  |
-| 424. Longest Repeating Character Replacement | Medium |  |  |  |
-| 49. Group Anagrams | Medium |  |  |  |
+| 424. Longest Repeating Character Replacement | Medium | x |  |  |
+| 49. Group Anagrams | Medium | o |  |  |
 | 5. Longest Palindromic Substring | Medium |  |  |  |
 | 647. Palindromic Substrings | Medium |  |  |  |
 | 271. Encode and Decode Strings | Medium |  |  |  |
