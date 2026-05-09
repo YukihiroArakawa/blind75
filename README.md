@@ -87,7 +87,7 @@ blind75の練習用リポジトリ
 | 3. Longest Substring Without Repeating Characters | Medium | x |  |  |
 | 424. Longest Repeating Character Replacement | Medium | x |  |  |
 | 49. Group Anagrams | Medium | o |  |  |
-| 5. Longest Palindromic Substring | Medium |  |  |  |
+| 5. Longest Palindromic Substring | Medium | o |  |  |
 | 647. Palindromic Substrings | Medium |  |  |  |
 | 271. Encode and Decode Strings | Medium |  |  |  |
 | 76. Minimum Window Substring | Hard |  |  |  |
