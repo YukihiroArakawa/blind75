@@ -66,7 +66,7 @@ blind75の練習用リポジトリ
 | 206. Reverse Linked List | Easy | x |  |  |
 | 141. Linked List Cycle | Easy | x |  |  |
 | 21. Merge Two Sorted Lists | Easy | x |  |  |
-| 19. Remove Nth Node From End of List | Medium |  |  |  |
+| 19. Remove Nth Node From End of List | Medium | x |  |  |
 | 143. Reorder List | Medium |  |  |  |
 | 23. Merge k Sorted Lists | Hard |  |  |  |
 
