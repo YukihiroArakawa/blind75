@@ -89,7 +89,7 @@ blind75の練習用リポジトリ
 | 49. Group Anagrams | Medium | o |  |  |
 | 5. Longest Palindromic Substring | Medium | o |  |  |
 | 647. Palindromic Substrings | Medium | x  |  |  |
-| 271. Encode and Decode Strings | Medium |  |  |  |
+| 271. Encode and Decode Strings | Medium | x |  |  |
 | 76. Minimum Window Substring | Hard |  |  |  |
 
 ## Tree (木)
