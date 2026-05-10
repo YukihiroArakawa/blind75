@@ -42,7 +42,7 @@ blind75の練習用リポジトリ
 ## Graph (グラフ)
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
-| 133. Clone Graph | Medium |  |  |  |
+| 133. Clone Graph | Medium | x |  |  |
 | 207. Course Schedule | Medium | x |  |  |
 | 417. Pacific Atlantic Water Flow | Medium |  |  |  |
 | 200. Number of Islands | Medium |  |  |  |
