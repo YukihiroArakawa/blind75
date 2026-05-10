@@ -10,6 +10,223 @@
 - **中心展開**: 回文系
 - **Stack**: 括弧マッチ
 
+## String テクニックパターン
+
+### まず覚える型
+
+| パターン | 何をしたいとき使うか | 合図 |
+| --- | --- | --- |
+| Sliding Window | 部分文字列の最長/最短 | 「substring で条件を満たす最大/最小」 |
+| Two Pointers | 両端比較、skip しながら判定 | 「回文」「左右から詰める」 |
+| 文字頻度カウント | アナグラム、置換可能性 | 「同じ文字を何回含むか」 |
+| 中心展開 | 回文部分文字列 | 「palindrome substring」 |
+| Stack | 括弧や入れ子構造 | 「対応関係」「後入れ先出し」 |
+| 文字列 key 化 | グルーピング、正規化 | 「並び順は違うが本質は同じ」 |
+
+### 1. Sliding Window
+
+- 用途:
+  - 条件を満たす最長部分文字列
+  - 条件を満たす最短部分文字列
+- 発想: `left..right` の連続区間を保ちながら、右で広げて左で縮める
+
+#### 最長系の型
+
+```java
+int left = 0;
+int best = 0;
+
+for (int right = 0; right < s.length(); right++) {
+  // window に s.charAt(right) を追加
+
+  while (window が不正) {
+    // s.charAt(left) を window から除外
+    left++;
+  }
+
+  best = Math.max(best, right - left + 1);
+}
+```
+
+#### 最短系の型
+
+```java
+int left = 0;
+int bestLen = Integer.MAX_VALUE;
+
+for (int right = 0; right < s.length(); right++) {
+  // window に追加
+
+  while (window が条件を満たす) {
+    bestLen = Math.min(bestLen, right - left + 1);
+    // left を縮める
+    left++;
+  }
+}
+```
+
+- 典型問題: `#3`, `#424`, `#76`
+- ありがちなバグ:
+  - `left` を 1 ずつしか動かせず、本当はジャンプできる場面で遅くなる
+  - 「window が有効か」の定義が曖昧
+
+### 2. Two Pointers
+
+- 用途: 回文判定、左右比較、不要文字を飛ばす
+- 発想: 両端または同方向 2 本で、1 回走査に落とす
+- 定型:
+
+```java
+int left = 0;
+int right = s.length() - 1;
+
+while (left < right) {
+  while (left < right && スキップ条件) left++;
+  while (left < right && スキップ条件) right--;
+
+  if (比較して不一致) {
+    return false;
+  }
+
+  left++;
+  right--;
+}
+```
+
+- 典型問題: `#125 Valid Palindrome`
+
+### 3. 文字頻度カウント
+
+- 用途:
+  - アナグラム判定
+  - 置換回数や不足文字数の管理
+  - グルーピング key 作成
+- 発想: 「順序」ではなく「各文字が何回出るか」を見る
+
+#### 英小文字限定なら配列 26
+
+```java
+int[] count = new int[26];
+for (char c : s.toCharArray()) {
+  count[c - 'a']++;
+}
+```
+
+#### 任意文字なら HashMap
+
+```java
+Map<Character, Integer> count = new HashMap<>();
+count.put(c, count.getOrDefault(c, 0) + 1);
+```
+
+- 典型問題: `#242`, `#49`, `#424`, `#76`
+- 使い分け:
+  - 文字種が固定で小さいなら配列
+  - 文字種が広いなら HashMap
+
+### 4. 中心展開
+
+- 用途: 最長回文部分文字列、回文部分文字列数
+- 発想: 回文は中心から外へ対称に広がる
+- 定型:
+
+```java
+private int expand(String s, int left, int right) {
+  while (left >= 0 && right < s.length()
+      && s.charAt(left) == s.charAt(right)) {
+    left--;
+    right++;
+  }
+  return right - left - 1;
+}
+```
+
+- 重要:
+  - 奇数長中心 `expand(i, i)`
+  - 偶数長中心 `expand(i, i + 1)`
+- 典型問題: `#5`, `#647`
+- ありがちなバグ:
+  - 偶数長中心を試し忘れる
+  - ループ終了後の区間補正を間違える
+
+### 5. Stack
+
+- 用途: 括弧対応、入れ子構造
+- 発想: 最後に開いたものから先に閉じられるので LIFO が合う
+- 定型:
+
+```java
+Stack<Character> stack = new Stack<>();
+
+for (char c : s.toCharArray()) {
+  if (開き記号) {
+    stack.push(c);
+  } else {
+    if (stack.isEmpty() || stack.pop() != 対応する開き記号) {
+      return false;
+    }
+  }
+}
+
+return stack.isEmpty();
+```
+
+- 典型問題: `#20 Valid Parentheses`
+
+### 6. 文字列を key 化する
+
+- 用途: アナグラムを同一グループにまとめる
+- 発想: 本質的に同じ文字列へ正規化する
+- 代表的な key:
+  - ソート済み文字列
+  - 頻度配列を連結した文字列
+- 典型問題: `#49 Group Anagrams`
+
+### 7. 長さプレフィックスで曖昧さを消す
+
+- 用途: 文字列 list の encode / decode
+- 発想: デリミタだけでは本文と衝突するので、長さを先に書く
+- 定型:
+
+```java
+encoded.append(str.length()).append('#').append(str);
+```
+
+- decode は `#` まで読んで長さを取り、その長さ分だけ本文を読む
+- 典型問題: `#271 Encode and Decode Strings`
+
+### 8. 問題文からの見分け方
+
+- 「部分文字列の最長/最短」なら `Sliding Window`
+- 「回文判定」なら `Two Pointers`
+- 「回文部分文字列」なら `中心展開`
+- 「アナグラム」「頻度込みで一致」なら `文字頻度カウント`
+- 「括弧」「入れ子」なら `Stack`
+- 「グループ化」なら `key 化`
+- 「エンコード/デコード」なら `長さプレフィックス`
+
+### 9. String で壊れやすいポイント
+
+- window が有効か無効かの条件があいまい
+- `left` を動かした後の count 更新を忘れる
+- 大文字小文字や英数字以外の正規化条件を落とす
+- 回文で奇数長しか見ていない
+- デリミタ方式で本文との衝突を考えていない
+
+### 10. Blind 75 String の対応
+
+| 問題 | 主パターン | 補助パターン |
+| --- | --- | --- |
+| 242 Valid Anagram | 文字頻度カウント | 配列 26 |
+| 20 Valid Parentheses | Stack | ペア表 |
+| 125 Valid Palindrome | Two Pointers | 正規化 |
+| 3 Longest Substring Without Repeating Characters | Sliding Window | last index map |
+| 424 Longest Repeating Character Replacement | Sliding Window | 頻度カウント |
+| 49 Group Anagrams | key 化 | HashMap |
+| 5 Longest Palindromic Substring | 中心展開 | 奇数/偶数中心 |
+| 647 Palindromic Substrings | 中心展開 | カウント |
+| 271 Encode and Decode Strings | 長さプレフィックス | 走査 |
+
 ## 索引
 
 | # | 問題 | 難易度 | 中心パターン |

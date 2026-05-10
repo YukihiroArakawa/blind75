@@ -3,6 +3,221 @@
 各問題について「問題文サマリ」「着目すべき法則性 (Key Insight)」「解法サマリ」を整理する。
 **計算量** は `時間 / 空間` の表記。`N` はノード数、`H` は木の高さ、`L` は文字列長など問題ごとに定義。
 
+## Tree テクニックパターン
+
+### まず覚える型
+
+| パターン | 何をしたいとき使うか | 合図 |
+| --- | --- | --- |
+| DFS 再帰 | 部分木の答えを集約したい | 「左右部分木の結果から決まる」 |
+| BFS / Queue | レベル順に見たい | 「各深さごとに処理したい」 |
+| BST の性質利用 | 値比較で枝を絞れる | 「左 < 根 < 右」 |
+| In-order traversal | BST の昇順性を使いたい | 「k 番目」「単調増加判定」 |
+| Tree DP | 子の情報を親に返す | 「最大和」「片側だけ返す」 |
+| Trie | prefix 共有、文字列集合 | 「prefix 検索」「辞書」 |
+
+### 1. DFS 再帰
+
+- 用途: 深さ計算、木の比較、反転、部分木判定
+- 発想: 木は「ノード + 左部分木 + 右部分木」なので、部分木に同じ処理を委譲しやすい
+- 定型:
+
+```java
+private int dfs(TreeNode node) {
+  if (node == null) {
+    return 0;
+  }
+
+  int left = dfs(node.left);
+  int right = dfs(node.right);
+  return Math.max(left, right) + 1;
+}
+```
+
+- 典型問題: `#104`, `#100`, `#226`, `#572`
+- ありがちなバグ:
+  - `null` のベースケースが曖昧
+  - 「戻り値で返す情報」と「副作用で更新する情報」が混ざる
+
+### 2. BFS / Queue
+
+- 用途: レベル順走査、最短手数、深さごとの集計
+- 発想: Queue を使うと浅いノードから順に処理できる
+- レベル単位の定型:
+
+```java
+Queue<TreeNode> queue = new LinkedList<>();
+queue.offer(root);
+
+while (!queue.isEmpty()) {
+  int levelSize = queue.size();
+  List<Integer> level = new ArrayList<>();
+
+  for (int i = 0; i < levelSize; i++) {
+    TreeNode node = queue.poll();
+    level.add(node.val);
+
+    if (node.left != null) queue.offer(node.left);
+    if (node.right != null) queue.offer(node.right);
+  }
+}
+```
+
+- `queue.size()` を先に取ると「そのレベルだけ」をきれいに切り出せる
+- 典型問題: `#102`
+
+### 3. BST の性質を使う
+
+- 性質: 任意のノードで `左部分木の全値 < node.val < 右部分木の全値`
+- 用途:
+  - 値比較だけで進行方向を決める
+  - 範囲制約で BST 妥当性を判定する
+
+#### 値比較で枝を絞る型
+
+```java
+while (root != null) {
+  if (p.val < root.val && q.val < root.val) {
+    root = root.left;
+  } else if (p.val > root.val && q.val > root.val) {
+    root = root.right;
+  } else {
+    return root;
+  }
+}
+```
+
+- 典型問題: `#235 Lowest Common Ancestor of a BST`
+
+#### 範囲伝播で妥当性判定する型
+
+```java
+private boolean validate(TreeNode node, long lower, long upper) {
+  if (node == null) {
+    return true;
+  }
+  if (node.val <= lower || node.val >= upper) {
+    return false;
+  }
+  return validate(node.left, lower, node.val)
+      && validate(node.right, node.val, upper);
+}
+```
+
+- 典型問題: `#98 Validate Binary Search Tree`
+- ありがちなバグ:
+  - 親子比較だけで済ませてしまう
+  - `int` 境界で overflow するので `long` を使わない
+
+### 4. In-order traversal
+
+- 性質: BST を in-order で走査すると昇順になる
+- 用途:
+  - BST 判定
+  - `k` 番目に小さい値
+- 反復定型:
+
+```java
+Stack<TreeNode> stack = new Stack<>();
+TreeNode current = root;
+
+while (current != null || !stack.isEmpty()) {
+  while (current != null) {
+    stack.push(current);
+    current = current.left;
+  }
+
+  current = stack.pop();
+  current = current.right;
+}
+```
+
+- 典型問題: `#230`, `#98`
+
+### 5. Tree DP
+
+- 用途: 最大パス和のように、各ノードで「子の情報をまとめて親に返す」問題
+- 発想:
+  - 親に返す値
+  - そのノードを頂点にした局所最適
+  を分けて考える
+- 典型問題: `#124 Binary Tree Maximum Path Sum`
+- よくある型:
+  - 戻り値は「片側だけ伸ばせる最適値」
+  - グローバル変数は「そのノードを通過する最適値」で更新
+
+### 6. Trie
+
+- 用途: prefix 検索、単語辞書、ワイルドカード検索
+- 発想: 各文字を 1 辺として、共通 prefix を共有する木構造にする
+- 定型構造:
+
+```java
+class TrieNode {
+  Map<Character, TrieNode> children = new HashMap<>();
+  boolean isEnd;
+}
+```
+
+- 典型問題: `#208`, `#211`, `#212`
+- ありがちなバグ:
+  - `isEnd` を付け忘れて `app` と `apple` を区別できない
+  - `'.'` を通常文字と同じ処理にしてしまう
+
+### 7. 木の再構築
+
+- 用途: 走査順配列から元の木を戻す
+- 発想:
+  - preorder の先頭は root
+  - inorder では root を境に左部分木と右部分木に分かれる
+- 典型問題: `#105 Construct Binary Tree from Preorder and Inorder Traversal`
+- 実装の要点:
+  - `inorder` の index を HashMap 化して O(1) 参照
+  - `preorder` の進行位置を再帰間で共有
+
+### 8. serialize / deserialize
+
+- 用途: 木構造を文字列に落として復元したい
+- 発想: 値だけでなく `null` も明示しないと一般二分木は復元できない
+- 定型:
+  - serialize: preorder + `null` マーカー
+  - deserialize: token を前から消費しながら左右を再帰生成
+- 典型問題: `#297`
+
+### 9. 問題文からの見分け方
+
+- 「深さ」「合計」「左右部分木から決まる」なら `DFS`
+- 「レベル順」「各段ごと」なら `BFS`
+- 「BST」と書いてあるなら値比較や in-order を疑う
+- 「k 番目」「昇順」なら `in-order`
+- 「最大パス」「子の情報を親に返す」なら `Tree DP`
+- 「prefix」「辞書」「ワイルドカード」なら `Trie`
+- 「走査順から元の木を作る」なら `再構築`
+
+### 10. Tree で壊れやすいポイント
+
+- `null` ベースケースの戻り値がずれている
+- 「戻り値」と「グローバル更新」を混同している
+- BST を親子比較だけで判定してしまう
+- BFS で `queue.size()` を毎回動的に見て、同レベル境界が壊れる
+- 再構築問題で配列範囲の定義がずれる
+
+### 11. Blind 75 Tree の対応
+
+| 問題 | 主パターン | 補助パターン |
+| --- | --- | --- |
+| 104 Maximum Depth of Binary Tree | DFS | なし |
+| 100 Same Tree | DFS 同時走査 | なし |
+| 226 Invert Binary Tree | DFS | なし |
+| 572 Subtree of Another Tree | DFS | Same Tree を再利用 |
+| 102 Binary Tree Level Order Traversal | BFS | レベル境界管理 |
+| 105 Construct Binary Tree from Preorder and Inorder Traversal | 再構築 | HashMap |
+| 98 Validate Binary Search Tree | BST 範囲伝播 | in-order |
+| 230 Kth Smallest Element in a BST | in-order | BST |
+| 235 Lowest Common Ancestor of a BST | BST 値比較 | 反復 DFS 的走査 |
+| 208 Implement Trie | Trie | なし |
+| 211 Add and Search Words | Trie | DFS |
+
 ## 索引
 
 | # | 問題 | 難易度 | 中心パターン |

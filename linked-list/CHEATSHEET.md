@@ -8,6 +8,207 @@
 - **Two pointers (slow/fast)**: 中央検出、循環検出、N 番目検出
 - **In-place 反転**: prev/curr/next の 3 変数で進める
 
+## LinkedList テクニックパターン
+
+### まず覚える型
+
+| パターン | 何をしたいとき使うか | 合図 |
+| --- | --- | --- |
+| Dummy head | 先頭ノードを消す、差し替える、マージする | 「head 自体が変わるかも」 |
+| Slow / Fast pointer | 中央、サイクル、末尾から N 番目 | 「1 回走査で位置関係を作りたい」 |
+| In-place reverse | 向きをひっくり返す、後半だけ逆順にする | 「next の向きを変える」 |
+| 2 本のリストをマージ | 交互結合、ソート済みマージ | 「2 系統を 1 本に編み込む」 |
+| ポインタ退避 | `next` を壊す前の保全 | 「つなぎ替えがある」 |
+
+### 1. Dummy head
+
+- 用途: 先頭削除、先頭挿入、2 本のリストのマージ
+- 発想: 本物の `head` の手前に偽ノードを置いて、先頭だけ特別扱いしない
+- 定型:
+
+```java
+ListNode dummy = new ListNode(0);
+dummy.next = head;
+ListNode current = dummy;
+```
+
+- 典型問題: `#19 Remove Nth Node From End`, `#21 Merge Two Sorted Lists`
+- ありがちなバグ:
+  - `return head` してしまい、先頭変更を反映できない
+  - `dummy.next` を返すべきところで `dummy` を返す
+
+### 2. Slow / Fast pointer
+
+- 用途:
+  - 中央を見つける
+  - サイクル検出
+  - 末尾から N 番目を 1-pass で見つける
+- 発想: 進む速度差か、開始位置の差で相対位置を作る
+
+#### 中央を見つける型
+
+```java
+ListNode slow = head;
+ListNode fast = head;
+
+while (fast.next != null && fast.next.next != null) {
+  slow = slow.next;
+  fast = fast.next.next;
+}
+```
+
+- ループ後の `slow` は「前半の末尾」寄り
+- `Reorder List` のように分割したい問題で使いやすい
+
+#### サイクル検出の型
+
+```java
+ListNode slow = head;
+ListNode fast = head;
+
+while (fast != null && fast.next != null) {
+  slow = slow.next;
+  fast = fast.next.next;
+  if (slow == fast) {
+    return true;
+  }
+}
+return false;
+```
+
+#### N 個ずらす型
+
+```java
+ListNode dummy = new ListNode(0, head);
+ListNode slow = dummy;
+ListNode fast = dummy;
+
+for (int i = 0; i < n + 1; i++) {
+  fast = fast.next;
+}
+
+while (fast != null) {
+  slow = slow.next;
+  fast = fast.next;
+}
+```
+
+- ループ後の `slow` は削除対象の 1 個手前
+- 典型問題: `#19 Remove Nth Node From End`
+
+### 3. In-place reverse
+
+- 用途: リスト全体の反転、後半だけ反転、`k` 個単位反転の土台
+- 発想: `curr.next` を `prev` に向け直しながら前進する
+- 定型:
+
+```java
+ListNode prev = null;
+ListNode curr = head;
+
+while (curr != null) {
+  ListNode next = curr.next;
+  curr.next = prev;
+  prev = curr;
+  curr = next;
+}
+
+return prev;
+```
+
+- 重要:
+  - `next` を先に退避する
+  - 返すのは `curr` ではなく `prev`
+- 典型問題: `#206 Reverse Linked List`, `#143 Reorder List`
+- ありがちなバグ:
+  - `while (curr.next != null)` にして最後のノードを処理し損ねる
+  - `return curr` にして `null` を返す
+
+### 4. 2 本のリストをマージする
+
+- 用途:
+  - ソート済み 2 本を 1 本にする
+  - 前半と後半を交互に編み込む
+- 発想: 今見ているノードの `next` を直接差し替える
+
+#### ソート済みマージ
+
+```java
+ListNode dummy = new ListNode(0);
+ListNode tail = dummy;
+
+while (l1 != null && l2 != null) {
+  if (l1.val < l2.val) {
+    tail.next = l1;
+    l1 = l1.next;
+  } else {
+    tail.next = l2;
+    l2 = l2.next;
+  }
+  tail = tail.next;
+}
+
+tail.next = (l1 != null) ? l1 : l2;
+return dummy.next;
+```
+
+#### 交互マージ
+
+```java
+while (second != null) {
+  ListNode firstNext = first.next;
+  ListNode secondNext = second.next;
+
+  first.next = second;
+  second.next = firstNext;
+
+  first = firstNext;
+  second = secondNext;
+}
+```
+
+- 典型問題: `#21 Merge Two Sorted Lists`, `#143 Reorder List`
+- ありがちなバグ:
+  - `next` を退避する前に `next` を上書きして残りを見失う
+  - 前半と後半を切り離さずにマージして循環を作る
+
+### 5. 分割してから処理する
+
+- 用途: `Reorder List` のように「前半」「後半」で役割が違う問題
+- 発想: 1 本のリストをそのまま扱うと複雑なので、いったん 2 本に分ける
+- 典型手順:
+  1. `slow/fast` で中央を見つける
+  2. `ListNode second = slow.next; slow.next = null;` で切る
+  3. 後半だけ反転または別処理
+  4. 2 本をマージ
+
+### 6. 問題文からの見分け方
+
+- 「末尾から N 番目」なら `2 pointers + dummy`
+- 「中央」「半分に分ける」なら `slow/fast`
+- 「逆順」「後ろから交互」なら `reverse`
+- 「head が変わる削除・挿入」なら `dummy`
+- 「2 本を 1 本にする」なら `merge`
+- 「複雑に見える並び替え」なら `split -> reverse -> merge` を疑う
+
+### 7. 連結リストで壊れやすいポイント
+
+- `next` を上書きする前に退避していない
+- 返すべき先頭が `head` なのか `dummy.next` なのか `prev` なのか曖昧
+- `null` 条件が 1 個ずれている
+- 分割後に `slow.next = null` しておらず、意図しないつながりが残る
+- ノードの値を見ているつもりで、ノード参照そのものを比較すべき場面を取り違える
+
+### 8. Blind 75 Linked List の対応
+
+| 問題 | 主パターン | 補助パターン |
+| --- | --- | --- |
+| 141 Linked List Cycle | slow/fast | なし |
+| 206 Reverse Linked List | reverse | ポインタ退避 |
+| 21 Merge Two Sorted Lists | dummy + merge | なし |
+| 19 Remove Nth Node From End | dummy + 2 pointers | ギャップを作る |
+| 143 Reorder List | split + reverse + merge | slow/fast |
+
 ## 索引
 
 | # | 問題 | 難易度 | 中心パターン |
