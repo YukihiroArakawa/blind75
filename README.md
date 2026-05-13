@@ -45,7 +45,7 @@ blind75の練習用リポジトリ
 | 133. Clone Graph | Medium | x |  |  |
 | 207. Course Schedule | Medium | x |  |  |
 | 417. Pacific Atlantic Water Flow | Medium | x |  |  |
-| 200. Number of Islands | Medium |  |  |  |
+| 200. Number of Islands | Medium | x |  |  |
 | 128. Longest Consecutive Sequence | Medium |  |  |  |
 | 261. Graph Valid Tree | Medium |  |  |  |
 | 323. Number of Connected Components in an Undirected Graph | Medium |  |  |  |
