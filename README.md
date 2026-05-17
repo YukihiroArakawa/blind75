@@ -71,7 +71,7 @@ blind75の練習用リポジトリ
 ## Matrix (行列)
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
-| 73. Set Matrix Zeroes | Medium |  |  |  |
+| 73. Set Matrix Zeroes | Medium | x |  |  |
 | 54. Spiral Matrix | Medium |  |  |  |
 | 48. Rotate Image | Medium |  |  |  |
 | 79. Word Search | Medium |  |  |  |
