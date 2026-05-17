@@ -48,7 +48,7 @@ blind75の練習用リポジトリ
 | 200. Number of Islands | Medium | x |  |  |
 | 128. Longest Consecutive Sequence | Medium | x |  |  |
 | 261. Graph Valid Tree | Medium | x  |  |  |
-| 323. Number of Connected Components in an Undirected Graph | Medium |  |  |  |
+| 323. Number of Connected Components in an Undirected Graph | Medium | o|  |  |
 | 269. Alien Dictionary | Hard |  |  |  |
 
 ## Interval (区間)
