@@ -72,7 +72,7 @@ blind75の練習用リポジトリ
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
 | 73. Set Matrix Zeroes | Medium | x |  |  |
-| 54. Spiral Matrix | Medium |  |  |  |
+| 54. Spiral Matrix | Medium | x |  |  |
 | 48. Rotate Image | Medium |  |  |  |
 | 79. Word Search | Medium |  |  |  |
 
