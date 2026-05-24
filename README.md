@@ -74,7 +74,7 @@ blind75の練習用リポジトリ
 | 73. Set Matrix Zeroes | Medium | x |  |  |
 | 54. Spiral Matrix | Medium | x |  |  |
 | 48. Rotate Image | Medium | x |  |  |
-| 79. Word Search | Medium |  |  |  |
+| 79. Word Search | Medium | x |  |  |
 
 ## String (文字列)
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
