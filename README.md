@@ -19,7 +19,7 @@ blind75の練習用リポジトリ
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
 | 191. Number of 1 Bits | Easy | x |  |  |
-| 338. Counting Bits | Easy |  |  |  |
+| 338. Counting Bits | Easy | x |  |  |
 | 268. Missing Number | Easy |  |  |  |
 | 190. Reverse Bits | Easy |  |  |  |
 | 371. Sum of Two Integers | Medium |  |  |  |
