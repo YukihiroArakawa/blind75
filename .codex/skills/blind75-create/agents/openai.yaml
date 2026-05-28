@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blind75 Create"
+  short_description: "Blind 75 用の LeetCode 問題素材をカテゴリ配下に作成"
+  default_prompt: "blind75-create <問題番号> の形式で指定された問題番号から、この blind75 リポジトリのカテゴリ配下に問題ディレクトリと教材ファイルを作成してください。"

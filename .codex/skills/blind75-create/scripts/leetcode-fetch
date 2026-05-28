@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Fetch LeetCode question data from the public GraphQL endpoint.
+# Usage: scripts/leetcode-fetch <title-slug>
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: scripts/leetcode-fetch <title-slug>" >&2
+  echo "Example: scripts/leetcode-fetch two-sum" >&2
+  exit 1
+fi
+
+slug="$1"
+
+curl -s -X POST https://leetcode.com/graphql \
+  -H 'Content-Type: application/json' \
+  -d "$(cat <<EOF
+{
+  "query": "query questionData(\$titleSlug: String!) { question(titleSlug: \$titleSlug) { questionFrontendId title titleSlug difficulty content } }",
+  "variables": {"titleSlug": "$slug"}
+}
+EOF
+)"
