@@ -21,7 +21,7 @@ blind75の練習用リポジトリ
 | 191. Number of 1 Bits | Easy | x |  |  |
 | 338. Counting Bits | Easy | x |  |  |
 | 268. Missing Number | Easy | x |  |  | 
-| 190. Reverse Bits | Easy |  |  |  |
+| 190. Reverse Bits | Easy | x |  |  |
 | 371. Sum of Two Integers | Medium |  |  |  |
 
 ## Dynamic Programming (動的計画法)
