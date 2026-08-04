@@ -28,7 +28,9 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               direnv
+              jdk21
               mdserve
+              dotnet-sdk_10
             ] ++ [ mdview ];
           };
         });

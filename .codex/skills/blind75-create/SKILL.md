@@ -81,7 +81,8 @@ LeetCode の問題番号を受け取り、この blind75 リポジトリのカ�
 ├── problem.md              # 原文の問題文（英語）
 ├── problem-ja.md           # 日本語訳の問題文
 ├── FirstSolution/
-│   └── Solution.java       # 解答用のクラスファイル（雛形）
+│   ├── Solution.java       # Java の解答用クラスファイル（雛形）
+│   └── Solution.cs         # C# の解答用クラスファイル（雛形）
 └── AISolution/
     ├── Solution.java       # AI による模範解答（Java、解説コメント付き）
     ├── Solution.cs         # AI による模範解答（C#、解説コメント付き）
@@ -141,14 +142,24 @@ Difficulty: {Easy/Medium/Hard}
 {制約条件を日本語に翻訳して記載}
 ```
 
-#### FirstSolution/Solution.java（解答雛形）
+#### FirstSolution/Solution.java / Solution.cs（解答雛形）
 
-LeetCode の問題に対応する Java クラスの雛形を作成する。
-API レスポンスの問題文からメソッドシグネチャを読み取り、それに合わせた雛形を生成する。
+LeetCode の問題に対応する Java と C# のクラス雛形を作成する。
+API レスポンスの問題文からメソッドシグネチャを読み取り、各言語に対応した雛形を生成する。
 
 ```java
 class Solution {
     // {メソッドシグネチャ（問題文から読み取る）}
+}
+```
+
+```csharp
+public class Solution {
+    // {メソッドシグネチャ（問題文から読み取り、C# の型に置き換える）}
+
+    public static void Main(string[] args) {
+        // ローカル実行用のテストコードをここに記述する。
+    }
 }
 ```
 
@@ -260,7 +271,7 @@ graph LR
 
 ## 6. コードの読み解き
 
-- `Solution.java` を上から順に、各ブロックの役割を説明する
+- `Solution.java` と `Solution.cs` を上から順に、各ブロックの役割を説明する
 - 条件分岐、ループ、更新式の意味を省略せずに説明する
 
 ## 7. 計算量
@@ -281,7 +292,8 @@ graph LR
 - コード例、変数名、データ構造名（例: `nums`, `ListNode`）は原文のまま残す
 - 数式や数値条件もそのまま保持する
 - HTML タグは Markdown に変換する（`<code>` -> バッククォート、`<sup>` -> `^` 等）
-- `FirstSolution/Solution.java` のメソッドシグネチャは問題文中のコード例から正確に読み取る
+- `FirstSolution/Solution.java` と `FirstSolution/Solution.cs` のメソッドシグネチャは問題文中のコード例から正確に読み取り、それぞれの言語の型・構文に合わせる
+- `FirstSolution/Solution.cs` には、ローカルで実行できるよう `public static void Main(string[] args)` を必ず含める。`Main` には入力例や出力確認のためのテストコードを追記できるようにする
 - `AISolution/Solution.java` と `AISolution/Solution.cs` は同じアルゴリズムを、それぞれの言語で自然な構文に落とし込んで実装する
 - `AISolution/explanation.md` には「利用するデータ構造を図式化した Mermaid 図」と具体例トレースを十分に含める
 - フローチャート（`flowchart`）やシーケンス図（`sequenceDiagram`）は使わない。処理の流れは箇条書きと表で表現し、Mermaid はデータ構造（HashMap・連結リスト・木・スタック・キュー・配列など）の可視化にのみ用いる
