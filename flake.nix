@@ -31,6 +31,8 @@
               jdk21
               mdserve
               dotnet-sdk_10
+              csharpier
+              python3
             ] ++ [ mdview ];
           };
         });
