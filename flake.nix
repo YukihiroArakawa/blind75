@@ -23,17 +23,26 @@
               exec mdserve --open --port "''${MDSERVE_PORT:-3001}" "$@"
             '';
           };
+          leetcode = pkgs.writeShellApplication {
+            name = "leetcode";
+            runtimeInputs = [ pkgs.nodejs_22 pkgs.glib pkgs.libsecret ];
+            text = ''
+              export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath [ pkgs.glib pkgs.libsecret ]}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+              exec npx --yes --package=@night-slayer18/leetcode-cli@3.3.0 leetcode "$@"
+            '';
+          };
         in
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
               direnv
+              fzf
               jdk21
               mdserve
               dotnet-sdk_10
               csharpier
               python3
-            ] ++ [ mdview ];
+            ] ++ [ mdview leetcode ];
           };
         });
     };
