@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>70. Climbing Stairs — 解説</title>
+  <style>
+    :root { --ink:#1f2937; --muted:#596579; --line:#dbe2ea; --paper:#fff; --canvas:#f6f8fb; --blue:#2563eb; --blue-pale:#eff6ff; --orange:#c2410c; --orange-pale:#fff7ed; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--canvas); font-family:ui-sans-serif,system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif; font-size:16px; line-height:1.9; }
+    main { width:min(820px,calc(100% - 32px)); margin:auto; padding:54px 0 80px; }
+    header.page { padding-bottom:30px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin-bottom:5px; color:var(--blue); font-size:.8rem; font-weight:800; letter-spacing:.1em; }
+    h1 { margin:0; font-size:clamp(2rem,5vw,3.3rem); line-height:1.25; letter-spacing:-.04em; }
+    .intro { margin:15px 0 0; color:var(--muted); font-size:1.06rem; }
+    section { margin-top:42px; }
+    h2 { margin:0 0 16px; font-size:1.55rem; line-height:1.4; letter-spacing:-.025em; }
+    h3 { margin:25px 0 8px; font-size:1.05rem; }
+    p { margin:0 0 15px; } ul,ol { margin:0 0 18px; padding-left:1.5em; } li+li { margin-top:5px; }
+    code,.formula { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    code { padding:.1em .32em; border-radius:4px; background:#eaf0f7; font-size:.92em; }
+    .figure { margin:23px 0; padding:22px; border:1px solid var(--line); border-radius:10px; background:var(--paper); }
+    figure { margin:0; } figcaption { margin-top:12px; color:var(--muted); font-size:.88rem; line-height:1.65; }
+    .problem-diagram { display:flex; align-items:flex-end; justify-content:center; min-height:166px; gap:4px; padding-top:25px; overflow:hidden; }.problem-step { position:relative; flex:0 0 84px; padding:8px 4px; border:1px solid #bfdbfe; border-bottom:0; border-radius:7px 7px 0 0; background:var(--blue-pale); color:#1e40af; font-size:.78rem; font-weight:700; text-align:center; }.problem-step:nth-child(1){height:45px}.problem-step:nth-child(2){height:68px}.problem-step:nth-child(3){height:91px}.problem-step:nth-child(4){height:114px}.problem-step:nth-child(5){height:137px;background:#dbeafe}.problem-step .goal{display:block;color:var(--blue);font-size:.95rem}.jump { position:absolute; left:50%; top:-26px; transform:translateX(-50%); white-space:nowrap; color:var(--orange); font-size:.75rem; font-weight:800; }.jump.two{top:-47px}
+    .two-paths { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; text-align:center; }
+    .path { padding:15px; border-radius:8px; background:var(--blue-pale); }.path b { display:block; color:var(--blue); font-size:1.1rem; }.operator { color:var(--blue); font-size:1.5rem; font-weight:800; }
+    .formula { margin-top:16px; padding:13px; border-radius:7px; color:#fff; background:#1e3a5f; text-align:center; font-size:1.06rem; }
+    .tree { display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:610px; margin:auto; }.tree div { padding:12px; border:1px solid #bfdbfe; border-radius:7px; background:var(--blue-pale); text-align:center; }.tree .root { grid-column:1 / -1; background:#dbeafe; font-weight:700; }.tree .repeat { border-color:#fdba74; background:var(--orange-pale); color:#9a3412; }.tree .hint { grid-column:1 / -1; border:0; background:transparent; color:var(--muted); font-size:.9rem; }
+    .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; counter-reset:steps; }.steps div { position:relative; padding:12px 9px 12px 38px; border-radius:7px; background:var(--blue-pale); font-size:.88rem; line-height:1.55; }.steps div::before { counter-increment:steps; content:counter(steps); position:absolute; left:10px; top:13px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--blue); color:#fff; font-size:.72rem; font-weight:800; }
+    .code { margin:18px 0; overflow:auto; padding:16px 18px; border-radius:8px; background:#172033; color:#e5e7eb; font:.86rem/1.75 ui-monospace,SFMono-Regular,monospace; white-space:pre; }.kw{color:#c4b5fd}.num{color:#fcd34d}.var{color:#7dd3fc}.code .on{display:block;margin:0 -18px;padding:0 15px;border-left:3px solid #60a5fa;background:#1e3a5f}
+    .demo { margin:23px 0; padding:18px; border:1px solid var(--line); border-radius:10px; background:var(--paper); }.controls { display:flex; flex-wrap:wrap; align-items:center; gap:9px; }.controls label { font-size:.9rem; font-weight:700; }.controls input{accent-color:var(--blue)} output { min-width:35px; color:var(--blue); font-weight:800; text-align:center; } button { border:1px solid #bfd1ee; border-radius:6px; padding:7px 10px; background:#fff; color:#174ea6; cursor:pointer; font:inherit; font-size:.86rem; } button:hover{background:var(--blue-pale)} button:disabled{opacity:.45;cursor:default}.readout{margin-left:auto;color:var(--muted);font-size:.85rem}
+    .stairs { display:flex; align-items:flex-end; justify-content:center; min-height:175px; gap:4px; margin:18px 0 7px; overflow:auto hidden; }.stair { flex:0 0 58px; display:flex; flex-direction:column; justify-content:flex-start; gap:2px; padding:7px 4px; border:1px solid #fed7aa; border-bottom:0; border-radius:6px 6px 0 0; background:#fff1df; color:#743b12; text-align:center; transition:.2s; }.stair.active { border-color:var(--blue); background:var(--blue); color:#fff; transform:translateY(-4px); }.at{font-size:.7rem}.ways{font-size:1.2rem;font-weight:800}.caption{font-size:.67rem}.trace { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }.state { padding:10px; border:1px solid var(--line); border-radius:7px; text-align:center; font-size:.85rem; }.state small{display:block;color:var(--muted);font-size:.73rem}.state strong{display:block;color:var(--blue);font-size:1.4rem}.state.current{background:var(--blue-pale);border-color:#93c5fd}
+    .callout { padding:16px 18px; border-left:4px solid var(--orange); background:var(--orange-pale); }.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.metric{padding:14px;border:1px solid var(--line);border-radius:7px;background:var(--paper)}.metric b{display:block;color:var(--blue);font-size:1.25rem}.metric span{font-size:.9rem;color:var(--muted)}
+    @media(max-width:620px){main{width:min(100% - 24px,820px);padding-top:30px}.two-paths,.trace,.metrics{grid-template-columns:1fr}.operator{text-align:center}.steps{grid-template-columns:1fr}.readout{width:100%;margin-left:0}.stair{flex-basis:51px}.problem-step{flex-basis:19%}}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="page"><div class="eyebrow">LEETCODE 70 · DYNAMIC PROGRAMMING</div><h1>Climbing Stairs</h1><p class="intro">1 段または 2 段ずつ上る階段で、頂上までの上り方を数える問題です。動的計画法の考え方を、文章を中心に説明します。</p></header>
+
+    <section><h2>1. 問題の整理</h2><p>入力は頂上までの段数 <code>n</code> です。1 回の移動では 1 段または 2 段を上れます。<code>n</code> 段目に着くまでの、異なる上り方の数を返します。</p><figure class="figure"><div class="problem-diagram" aria-label="1段または2段ずつ進み、n段目を目指す階段"><div class="problem-step">1 段目</div><div class="problem-step">2 段目</div><div class="problem-step">3 段目<span class="jump">1 段</span></div><div class="problem-step">4 段目<span class="jump two">2 段</span></div><div class="problem-step"><span class="goal">n 段目</span>頂上</div></div><figcaption>各移動で選べるのは「1 段上る」か「2 段上る」かの二つです。さまざまな選び方で、最後の n 段目を目指します。</figcaption></figure><p><code>n</code> は最大 45 なので答えは <code>int</code> に収まります。なお、上り方の順序は区別します。たとえば 3 段の場合、<code>1 + 2</code> と <code>2 + 1</code> は別々の方法です。</p></section>
+
+    <section><h2>2. 素直に数えると何が起きるか</h2><p>各地点で「1 段上る」「2 段上る」と分岐する再帰を考えることはできます。しかし、4 段目への方法を求めるとき、3 段目や 2 段目への方法を複数回求めることになります。同じ計算の繰り返しが、再帰だけで解く方法を非効率にします。</p><figure class="figure"><div class="tree"><div class="root">ways[4]</div><div>ways[3]</div><div class="repeat">ways[2]</div><div class="repeat">ways[2]（もう一度必要）</div><div>ways[1]</div><div class="hint">オレンジの <b>ways[2]</b> は重複して計算される値です。</div></div><figcaption>一度求めた段への方法数を記録して再利用するのが、動的計画法です。</figcaption></figure></section>
+
+    <section><h2>3. 最後の一歩から漸化式を作る</h2><p><code>ways[i]</code> を「<code>i</code> 段目に到達する方法の数」とします。<code>i</code> 段目へ最後に 1 段上って到着したなら、その直前は <code>i - 1</code> 段目です。最後に 2 段上ったなら、その直前は <code>i - 2</code> 段目です。</p><p>この二つのグループは重ならず、すべての到着方法を含みます。そのため、それぞれの方法数を足せば答えになります。</p><figure class="figure"><div class="two-paths"><div class="path"><b>i − 1 段目</b>から 1 段上る<br>ways[i − 1] 通り</div><div class="operator">＋</div><div class="path"><b>i − 2 段目</b>から 2 段上る<br>ways[i − 2] 通り</div></div><div class="formula">ways[i] = ways[i − 1] + ways[i − 2]</div><figcaption>前の二つの値を足して次の値を作るため、フィボナッチ数列と同じ形になります。</figcaption></figure></section>
+
+    <section><h2>4. 実装の流れ</h2><p>配列にすべての <code>ways[i]</code> を保存することもできます。ただし、次の値を求めるのに必要なのは直前の二つだけです。そこで、1 段目の値 <code>1</code> と 2 段目の値 <code>2</code> を二つの変数に保持します。</p><figure class="figure"><div class="steps"><div><code>n ≤ 2</code> なら <code>n</code> を返す</div><div><code>previous = 1</code>、<code>current = 2</code> で初期化する</div><div>3 段目から <code>n</code> 段目まで繰り返す</div><div><code>next</code> に二つの値の和を保存する</div><div>値を一段ずつずらし、<code>current</code> を返す</div></div></figure><p>更新では、まず <code>next</code> を計算することが大切です。<code>previous</code> を先に更新すると、和を作るための古い値を失ってしまいます。</p><div class="code"><span class="kw">int</span> previous = <span class="num">1</span>;
+<span class="kw">int</span> current = <span class="num">2</span>;
+<span class="kw">for</span> (<span class="kw">int</span> step = <span class="num">3</span>; step &lt;= n; step++) {
+<span class="on">  <span class="kw">int</span> next = <span class="var">previous</span> + <span class="var">current</span>;</span>
+  previous = current;
+  current = next;
+}</div></section>
+
+    <section><h2>5. 具体例: n = 5 を追う</h2><p>初期状態は、1 段目に到着する方法数が 1、2 段目に到着する方法数が 2 です。3 段目では <code>1 + 2 = 3</code>、4 段目では <code>2 + 3 = 5</code>、5 段目では <code>3 + 5 = 8</code> と計算します。</p><p>下の図では段数を変えたり、「次を計算」を押したりして、変数がどのように入れ替わるかを確認できます。これは上の説明を補うための操作例です。</p><div class="demo"><div class="controls"><label for="steps">段数 n</label><input id="steps" type="range" min="1" max="12" value="5"><output id="stepOut">5</output><button id="prev">← 前へ</button><button id="next">次を計算 →</button><button id="reset">最初から</button><span class="readout" id="readout"></span></div><div class="stairs" id="stairs" aria-live="polite"></div><div class="trace"><div class="state" id="previous"><small>previous = ways[i − 2]</small><strong>—</strong><span>2 段前</span></div><div class="state current" id="current"><small>current = ways[i − 1]</small><strong>—</strong><span>1 段前</span></div><div class="state" id="nextState"><small>next = previous + current</small><strong>—</strong><span>次の値</span></div></div></div></section>
+
+    <section><h2>6. 計算量</h2><p>3 段目から <code>n</code> 段目まで一回ずつ計算するため、時間計算量は <code>O(n)</code> です。保持するのは <code>previous</code>、<code>current</code>、<code>next</code> の三つだけなので、空間計算量は <code>O(1)</code> です。</p><div class="metrics"><div class="metric"><b>O(n)</b><span>支配的な処理は <code>n − 2</code> 回のループです。</span></div><div class="metric"><b>O(1)</b><span>段数にかかわらず、一定数の整数変数だけを使います。</span></div></div></section>
+
+    <section><h2>7. つまずきやすいポイント</h2><div class="callout"><ul><li><code>n = 1</code> と <code>n = 2</code> は先に処理します。初期値とループ範囲が明快になります。</li><li>和を保存する変数を用意してから、<code>previous</code> と <code>current</code> を更新します。</li><li>上り方の順序が異なれば別の方法です。</li></ul></div></section>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const steps = $('steps'), out = $('stepOut'), stairs = $('stairs');
+    let target = Number(steps.value), position = 2;
+    const ways = (n) => { const a = [0, 1, 2]; for (let i = 3; i <= n; i++) a[i] = a[i - 1] + a[i - 2]; return a; };
+    function stateCard(id, value) { $(id).querySelector('strong').textContent = value ?? '—'; }
+    function render() {
+      const values = ways(target), computed = Math.min(position, target), running = computed >= 3;
+      out.value = target;
+      stairs.innerHTML = values.slice(1).map((value, i) => { const step = i + 1; return `<div class="stair ${step === computed ? 'active' : ''}" style="height:${48 + step * 13}px"><span class="at">${step} 段目</span><span class="ways">${value}</span><span class="caption">通り</span></div>`; }).join('');
+      stateCard('previous', running ? values[computed - 2] : '1');
+      stateCard('current', running ? values[computed - 1] : (target === 1 ? '—' : '2'));
+      stateCard('nextState', running ? values[computed] : (target <= 2 ? values[target] : '—'));
+      $('previous').querySelector('small').textContent = running ? `previous = ways[${computed - 2}]` : 'previous = ways[1]';
+      $('current').querySelector('small').textContent = running ? `current = ways[${computed - 1}]` : 'current = ways[2]';
+      $('nextState').querySelector('small').textContent = running ? `${values[computed - 2]} + ${values[computed - 1]} = ${values[computed]}` : 'next = previous + current';
+      $('readout').textContent = computed < target ? `${computed + 1} 段目を計算する準備` : `${target} 段目への上り方は ${values[target]} 通り`;
+      $('prev').disabled = position <= 2; $('next').disabled = position >= target;
+    }
+    steps.addEventListener('input', () => { target = Number(steps.value); position = Math.min(2, target); render(); });
+    $('next').addEventListener('click', () => { position = Math.min(target, position + 1); render(); });
+    $('prev').addEventListener('click', () => { position = Math.max(2, position - 1); render(); });
+    $('reset').addEventListener('click', () => { position = Math.min(2, target); render(); });
+    render();
+  </script>
+</body>
+</html>

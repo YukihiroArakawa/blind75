@@ -27,7 +27,7 @@ blind75の練習用リポジトリ
 ## Dynamic Programming (動的計画法)
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
-| 70. Climbing Stairs | Easy |  |  |  |
+| 70. Climbing Stairs | Easy | x |  |  |
 | 322. Coin Change | Medium |  |  |  |
 | 300. Longest Increasing Subsequence | Medium |  |  |  |
 | 1143. Longest Common Subsequence | Medium |  |  |  |
