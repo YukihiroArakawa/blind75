@@ -42,6 +42,7 @@
               dotnet-sdk_10
               csharpier
               python3
+              nodejs_22
             ] ++ [ mdview leetcode ];
           };
         });
