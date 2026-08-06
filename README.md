@@ -28,7 +28,7 @@ blind75の練習用リポジトリ
 | 問題 | 難易度 | 1周目 | 2周目 | 3周目 |
 | --- | --- | --- | --- | --- |
 | 70. Climbing Stairs | Easy | x |  |  |
-| 322. Coin Change | Medium |  |  |  |
+| 322. Coin Change | Medium | x |  |  |
 | 300. Longest Increasing Subsequence | Medium |  |  |  |
 | 1143. Longest Common Subsequence | Medium |  |  |  |
 | 139. Word Break | Medium |  |  |  |
